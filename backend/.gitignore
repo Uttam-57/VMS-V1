@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+prisma/isrgrootx1.pem
+# Logs
+logs
+
+uploads/
+
+src/uploads/
+
+/src/generated/prisma
+
+/src/generated/prisma

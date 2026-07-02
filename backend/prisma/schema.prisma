@@ -1,0 +1,177 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model carrywith {
+  id          String @id
+  name        String
+  description String
+  status      String @default("active")
+}
+
+model companyregister {
+  id               String   @id @default("default")
+  companyFullName  String   @default("")
+  companyShortName String   @default("")
+  companyContactNo String   @default("")
+  logoUrl          String   @default("")
+  hostName         String   @default("")
+  portNo           Int      @default(0)
+  userEmailId      String   @default("")
+  emailPassword    String   @default("")
+  updatedAt        DateTime
+  endTime          String   @default("19:00")
+  startTime        String   @default("09:00")
+}
+
+model department {
+  id     String @id
+  name   String
+  status String @default("active")
+}
+
+model employee {
+  id                             String    @id
+  name                           String
+  employeeId                     String
+  department                     String
+  designation                    String?
+  email                          String?
+  phone                          String?
+  status                         String    @default("active")
+  locationId                     String?
+  location                       location? @relation(fields: [locationId], references: [id], map: "Employee_locationId_fkey")
+  user_user_employeeIdToemployee user?     @relation("user_employeeIdToemployee")
+  user_userapprovals             user[]    @relation("userapprovals")
+
+  @@index([locationId], map: "Employee_locationId_fkey")
+}
+
+model formdata {
+  id                      String         @id
+  passDate                DateTime
+  mobileNo                String
+  name                    String
+  emailId                 String
+  companyName             String?
+  address                 String?
+  state                   String?
+  city                    String?
+  representingVisitorType String?
+  subLocation             String?
+  toMeetWith              String?
+  carryWith               Json?
+  idType                  String?
+  idNumber                String?
+  description             String?
+  maskCovid               String?        @default("")
+  noOfPerson              Int            @default(0)
+  visitArea               Json?
+  purpose                 String?
+  allowedHours            String?
+  photoUrl                String         @default("")
+  createdAt               DateTime       @default(now())
+  updatedAt               DateTime
+  status                  String?
+  approvedAt              DateTime?
+  approvedBy              String?
+  checkedInAt             DateTime?
+  checkedInBy             String?
+  checkedOutAt            DateTime?
+  checkedOutBy            String?
+  gatePassId              String?        @unique(map: "FormData_gatePassId_key")
+  rejectedAt              DateTime?
+  rejectedBy              String?
+  rejectionReason         String?
+  temperature             String?
+  token                   String?
+  persondetail            persondetail[]
+}
+
+model idtype {
+  id          String @id
+  name        String
+  description String
+  status      String @default("active")
+}
+
+model location {
+  id          String     @id
+  name        String
+  description String
+  status      String     @default("active")
+  employee    employee[]
+  user        user[]
+}
+
+model persondetail {
+  id            String   @id
+  formDataId    String
+  name          String
+  phoneNo       String
+  aadharNumber  String
+  aadharFileUrl String   @default("")
+  token         String?
+  formdata      formdata @relation(fields: [formDataId], references: [id], onDelete: Cascade, map: "PersonDetail_formDataId_fkey")
+
+  @@index([formDataId], map: "PersonDetail_formDataId_fkey")
+}
+
+model purpose {
+  id          String @id
+  name        String
+  description String
+  status      String @default("active")
+}
+
+model role {
+  id             String   @id
+  name           String   @unique(map: "Role_name_key")
+  dataVisibility String   @default("assigned")
+  withHierarchy  Boolean  @default(false)
+  permissions    Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  user           user[]
+}
+
+model user {
+  id                                 String     @id
+  name                               String
+  email                              String     @unique(map: "User_email_key")
+  password                           String
+  role                               String     @default("user")
+  active                             Boolean    @default(true)
+  createdAt                          DateTime   @default(now())
+  updatedAt                          DateTime
+  employeeId                         String?    @unique(map: "User_employeeId_key")
+  isSecurity                         Boolean    @default(false)
+  locationId                         String?
+  roleId                             String?
+  employee_user_employeeIdToemployee employee?  @relation("user_employeeIdToemployee", fields: [employeeId], references: [id], onDelete: Cascade, map: "User_employeeId_fkey")
+  location                           location?  @relation(fields: [locationId], references: [id], map: "User_locationId_fkey")
+  userRole                           role?      @relation(fields: [roleId], references: [id], map: "User_roleId_fkey")
+  employee_userapprovals             employee[] @relation("userapprovals")
+
+  @@index([locationId], map: "User_locationId_fkey")
+  @@index([roleId], map: "User_roleId_fkey")
+}
+
+model visitingarea {
+  id          String @id
+  name        String
+  floor       String
+  description String
+  status      String @default("active")
+}
+
+model visitortype {
+  id          String @id
+  name        String
+  description String
+  status      String @default("active")
+}

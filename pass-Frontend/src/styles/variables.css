@@ -1,0 +1,91 @@
+@theme {
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-ring: #4f46e5;
+
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-text: #94a3b8;
+  --color-sidebar-text-active: #ffffff;
+
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary-bg: #ffffff;
+  --color-secondary-border: #cbd5e1;
+  --color-secondary-text: #334155;
+  --color-secondary-foreground: #334155;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #e11d48;
+}
+
+:root {
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-ring: #4f46e5;
+
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-text: #94a3b8;
+  --color-sidebar-text-active: #ffffff;
+
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #ffffff;
+  --color-secondary-border: #cbd5e1;
+  --color-secondary-foreground: #334155;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #e11d48;
+
+  /* ── Semantic Alert / Banner Tokens ── */
+  --color-danger-bg:      #fef2f2;
+  --color-danger-border:  #fecaca;
+  --color-danger-text:    #991b1b;
+
+  --color-warning-bg:     #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-warning-text:   #92400e;
+
+  --color-success-bg:     #f0fdf4;
+  --color-success-border: #bbf7d0;
+  --color-success-text:   #15803d;
+
+  --color-info-bg:        #eff6ff;
+  --color-info-border:    #bfdbfe;
+  --color-info-text:      #1d4ed8;
+
+  /* ── Muted / Neutral ── */
+  --color-muted-bg:         #f1f5f9;
+  --color-muted-border:     #e2e8f0;
+  --color-muted-text:       #475569;
+  --color-muted-foreground: #94a3b8;
+
+  /* ── Pass Status Badge Tokens ── */
+  --status-approved-bg:      #dcfce7;
+  --status-approved-text:    #166534;
+  --status-pending-bg:       #fef3c7;
+  --status-pending-text:     #92400e;
+  --status-requested-bg:     #e0f2fe;
+  --status-requested-text:   #075985;
+  --status-checked-in-bg:    #dbeafe;
+  --status-checked-in-text:  #1e40af;
+  --status-checked-out-bg:   #f3f4f6;
+  --status-checked-out-text: #374151;
+  --status-rejected-bg:      #fee2e2;
+  --status-rejected-text:    #9b1c1c;
+  --status-expired-bg:       #f1f5f9;
+  --status-expired-text:     #475569;
+
+  /* ── Text Scale ── */
+  --text-heading: #0f172a;
+  --text-body:    #1e293b;
+  --text-muted:   #64748b;
+  --text-faint:   #94a3b8;
+}
